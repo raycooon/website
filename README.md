@@ -1,68 +1,51 @@
-# Syed Rayhan Ali — Portfolio
+# Syed Rayhan Ali — portfolio
 
-A single-page personal portfolio built with plain HTML, CSS and vanilla
-JavaScript. No frameworks, no build step, no dependencies.
+Minimal single-page portfolio. Plain HTML + CSS + a small vanilla JS file.
+No frameworks, no build step, no dependencies (fonts come from Google Fonts).
 
-## Run it
+## Run
 
-Open `index.html` directly in a browser, or serve the folder locally:
+Open `index.html` in a browser, or serve the folder:
 
 ```bash
-# any one of these, from the project root
 python -m http.server 8000
-npx serve .
 ```
 
-Then visit `http://localhost:8000`.
+## Deploy
 
-## Deploy it
+- **GitHub Pages:** push to a repo → Settings → Pages → deploy from branch (root).
+- **Vercel:** import the repo — no configuration needed.
 
-The site is static, so GitHub Pages or Vercel both work as-is:
+## Edit
 
-- **GitHub Pages:** push this folder to a repository, then
-  Settings → Pages → deploy from branch (root).
-- **Vercel:** import the repository at vercel.com — no configuration needed.
+| What | Where |
+| --- | --- |
+| Name, intro, about text | `index.html` |
+| Projects | `PROJECTS` array at the top of `script.js` |
+| GitHub / email | `index.html` (`#github`, `#contact`) |
+| Colors, spacing, widths | `:root` variables in `style.css` |
+| Fonts | Google Fonts `<link>` in `index.html` + `--font-display` / `--font-body` in `style.css` |
 
-## Where to edit things
-
-| What                      | Where                                                        |
-| ------------------------- | ------------------------------------------------------------ |
-| Name, intro, bio          | `index.html` (hero + `#about` section)                        |
-| Interests list            | `index.html` → `.explore-list`                                |
-| Projects                  | `js/main.js` → `PROJECTS` array (see below)                   |
-| GitHub handle + link      | `index.html` → `#github` and `#contact` sections              |
-| Email                     | `index.html` → `#contact` section (`mailto:` links)           |
-| Colors                    | `css/style.css` → `:root` variables                           |
-| Fonts                     | `css/style.css` → `--font-display` / `--font-body` + Google Fonts `<link>` in `index.html` |
-| Spacing / widths          | `css/style.css` → `:root` variables                           |
-
-## Adding a project
-
-Open `js/main.js` and add an entry to the `PROJECTS` array at the top:
+### Adding a project
 
 ```js
 {
-  num: "04",                        // displayed as "PROJECT 04"
+  number: "04",
   title: "My Project",
   description: "One or two sentences.",
-  tech: ["Python", "Pandas"],       // or [] to show "—"
-  status: "COMPLETED",              // badge text
-  github: "https://github.com/raycooon/my-project", // or null to disable the button
-  demo: null                        // or a URL for "VIEW PROJECT"
+  technologies: ["Python"],
+  status: "completed",
+  github: "https://github.com/raycooon/my-project",
+  demo: null
 }
 ```
 
-The card is rendered automatically. If JavaScript is disabled, the three
-static placeholder cards in `index.html` are shown instead — keep those in
-sync if you don't use JS.
+`github` / `demo` as `null` renders a non-linked row.
 
 ## Files
 
 ```
-index.html            page content and structure
-css/style.css         design system + all component styles
-css/responsive.css    breakpoints + mobile navigation overlay
-js/main.js            menu, active nav, reveals, boot, project renderer
-js/ecg.js             ECG waveform animation
-assets/icons/favicon.svg
+index.html    content + structure
+style.css     all styling (variables at the top)
+script.js     menu, active nav, reveals, ECG, project list
 ```

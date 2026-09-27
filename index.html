@@ -5,292 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Syed Rayhan Ali | CSE Student</title>
-  <meta name="description" content="Portfolio of Syed Rayhan Ali, a first-year Computer Science Engineering student exploring Data Science, AI/ML, Computational Biology and Cybersecurity.">
+  <meta name="description" content="Portfolio of Syed Rayhan Ali, a first-year CSE student interested in Data Science, AI/ML, Computational Biology and Cybersecurity.">
   <meta name="theme-color" content="#050705">
 
-  <!-- Open Graph (add og:url + og:image once the site has a real domain) -->
   <meta property="og:title" content="Syed Rayhan Ali | CSE Student">
-  <meta property="og:description" content="First-year CSE student exploring Data Science, AI/ML, Computational Biology and Cybersecurity.">
+  <meta property="og:description" content="First-year CSE student interested in Data Science, AI/ML, Computational Biology and Cybersecurity.">
   <meta property="og:type" content="website">
+  <!-- Add og:url (and an og:image) once the site has a real domain. -->
 
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 
-  <!-- Fonts: Space Mono (display) + IBM Plex Mono (body). Falls back to monospace. -->
+  <!-- Fonts: Space Mono (display) + IBM Plex Mono (body). display=swap; falls back to monospace. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Marks that JS is available. Reveal animations only activate when this class exists,
-       so the site stays fully visible if JavaScript fails. -->
-  <script>document.documentElement.classList.add('js');</script>
+  <!-- Progressive enhancement flag: reveal animations only run when JS is available. -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-  <!-- Decorative full-screen layers (never interactive) -->
-  <div class="crt-overlay" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
-
-  <!-- Boot sequence: hidden by default, only activated by JS when motion is allowed -->
-  <div class="boot" id="boot" aria-hidden="true">
-    <div class="boot__inner">
-      <p class="boot__line">&gt; INITIALIZING SYSTEM</p>
-      <p class="boot__line">&gt; LOADING PROFILE</p>
-      <p class="boot__line">&gt; LOADING INTERFACE</p>
-      <p class="boot__line boot__line--final">SYSTEM ONLINE</p>
-    </div>
-  </div>
-
-  <a class="skip-link" href="#home">SKIP TO CONTENT</a>
+  <a class="skip-link" href="#home">Skip to content</a>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
-      <a class="nav__brand" href="#home">SYED RAYHAN ALI</a>
+      <a class="nav__name" href="#home">Syed Rayhan Ali</a>
 
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav__toggle-label" id="nav-toggle-label">MENU</span>
-        <span class="nav__toggle-icon" aria-hidden="true"><span></span><span></span></span>
-      </button>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">menu</button>
 
-      <ul class="nav__menu" id="nav-menu">
-        <li><a class="nav__link" href="#home">HOME</a></li>
-        <li><a class="nav__link" href="#about">ABOUT</a></li>
-        <li><a class="nav__link" href="#projects">PROJECTS</a></li>
-        <li><a class="nav__link" href="#github">GITHUB</a></li>
-        <li><a class="nav__link" href="#contact">CONTACT</a></li>
+      <ul class="nav__links" id="nav-menu">
+        <li><a class="nav__link" href="#home">home</a></li>
+        <li><a class="nav__link" href="#about">about</a></li>
+        <li><a class="nav__link" href="#projects">projects</a></li>
+        <li><a class="nav__link" href="#github">github</a></li>
+        <li><a class="nav__link" href="#contact">contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
 
-    <!-- ============ HOME ============ -->
-    <section id="home" class="hero">
-      <div class="container hero__grid">
+    <!-- ================= home ================= -->
+    <section id="home" class="home">
+      <h1 class="home__name">Syed Rayhan Ali</h1>
 
-        <div class="hero__content">
-          <p class="status-line reveal">
-            <span class="status-dot" aria-hidden="true"></span>
-            SYSTEM ONLINE&nbsp;&nbsp;//&nbsp;&nbsp;PROFILE: STUDENT&nbsp;&nbsp;//&nbsp;&nbsp;FOCUS: COMPUTER SCIENCE
-          </p>
+      <p class="home__intro">
+        First-year CSE student exploring<br>
+        Data Science, AI/ML, Computational Biology<br>
+        and Cybersecurity.
+      </p>
 
-          <h1 class="hero__name reveal">
-            SYED RAYHAN ALI<span class="cursor" aria-hidden="true"></span>
-          </h1>
+      <p class="home__links">
+        <a class="arrow-link" href="#projects">projects</a>
+        <a class="arrow-link" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">github</a>
+        <a class="arrow-link" href="mailto:syedrainy07@gmail.com">email</a>
+      </p>
 
-          <p class="hero__intro reveal">
-            First-year CSE student exploring
-            Data&nbsp;Science, AI/ML, Computational&nbsp;Biology,
-            and Cybersecurity.
-          </p>
-
-          <div class="hero__actions reveal">
-            <a class="btn" href="#projects">VIEW PROJECTS</a>
-            <a class="btn btn--ghost" href="#contact">CONTACT</a>
-          </div>
-        </div>
-
-        <!-- Decorative monitoring panel (desktop only) -->
-        <aside class="hero__panel corners reveal" aria-hidden="true">
-          <div class="panel__head">
-            <span>SIGNAL MONITOR</span>
-            <span class="status-dot status-dot--small"></span>
-          </div>
-
-          <svg class="panel__wave" viewBox="0 0 220 48" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0 24 H30 L36 24 40 12 44 36 48 24 H92 L98 24 102 6 106 40 110 24 H148 L154 24 158 15 162 33 166 24 H220"></path>
-          </svg>
-
-          <div class="panel__rows">
-            <div class="panel__row"><span>SIGNAL</span><span>ACTIVE</span></div>
-            <div class="panel__row"><span>MODE</span><span>EXPLORATION</span></div>
-            <div class="panel__row"><span>BUILD</span><span>V1.0</span></div>
-          </div>
-        </aside>
-
-      </div>
-
-      <!-- Ambient waveform, generated by js/ecg.js -->
-      <div class="ecg-band ecg-band--hero" aria-hidden="true">
-        <svg class="ecg-svg"><g class="ecg-track"></g></svg>
-      </div>
+      <!-- ECG signature: a static SVG path; animated by script.js when motion is allowed -->
+      <svg class="ecg" viewBox="0 0 680 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="ecg__path"
+          d="M0 34 H44 L52 34 56 26 60 42 64 34 H128 L136 34 142 12 148 52 154 34 H236 L244 34 248 27 252 41 256 34 H320 L328 34 334 12 340 52 346 34 H452 L460 34 464 26 468 42 472 34 H560 L568 34 574 15 580 50 586 34 H680"/>
+      </svg>
     </section>
 
-    <!-- ============ 01 / ABOUT ============ -->
+    <!-- ================= 01 / about ================= -->
     <section id="about" class="section">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">01&nbsp;/</span>
-          <h2 class="section-title">ABOUT</h2>
-          <span class="section-rule" aria-hidden="true"></span>
-        </header>
+      <h2 class="section__title"><span class="section__num">01&nbsp;/</span> about</h2>
 
-        <div class="about__grid">
-          <div class="about__bio reveal">
-            <p>
-              I'm Syed Rayhan Ali, a first-year Computer Science Engineering student.
-              Right now I'm learning the fundamentals and exploring where I want to go
-              next — building small things, breaking them, and reading a lot along the way.
-            </p>
-            <p>
-              I'm drawn to problems where computing meets real data and real systems:
-              from models that learn, to software that stays secure.
-            </p>
-          </div>
+      <div class="about">
+        <div class="about__text">
+          <p>
+            I'm a first-year CSE student interested in data science,
+            AI/ML, computational biology and cybersecurity.
+          </p>
+          <p>
+            I'm currently learning, experimenting and building
+            projects across these areas.
+          </p>
+        </div>
 
-          <div class="about__list reveal">
-            <p class="list-label">CURRENTLY EXPLORING</p>
-            <ul class="explore-list">
-              <li><span class="explore-list__index">01</span> DATA SCIENCE</li>
-              <li><span class="explore-list__index">02</span> AI / ML</li>
-              <li><span class="explore-list__index">03</span> COMPUTATIONAL BIOLOGY</li>
-              <li><span class="explore-list__index">04</span> CYBERSECURITY</li>
-            </ul>
-          </div>
+        <div class="about__aside">
+          <p class="label">currently exploring</p>
+          <ul class="explore-list">
+            <li>data science</li>
+            <li>AI / ML</li>
+            <li>computational biology</li>
+            <li>cybersecurity</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ 02 / PROJECTS ============ -->
+    <!-- ================= 02 / projects ================= -->
+    <!--
+      The list below is the no-JS version. To add real projects,
+      edit the PROJECTS array at the top of script.js — it
+      re-renders this list on page load.
+    -->
     <section id="projects" class="section">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">02&nbsp;/</span>
-          <h2 class="section-title">PROJECTS</h2>
-          <span class="section-rule" aria-hidden="true"></span>
-        </header>
+      <h2 class="section__title"><span class="section__num">02&nbsp;/</span> projects</h2>
 
-        <p class="section-note reveal">
-          PROJECT ARCHIVE&nbsp;&nbsp;//&nbsp;&nbsp;03 ENTRIES&nbsp;&nbsp;//&nbsp;&nbsp;STATUS: BUILDING
-        </p>
+      <p class="section__note">Projects I'm currently building.</p>
 
-        <!--
-          Placeholders below are the no-JS fallback.
-          To add real projects, edit the PROJECTS array in js/main.js —
-          it re-renders this list on load.
-        -->
-        <div class="projects__grid" id="project-list">
-          <article class="project-card corners">
-            <div class="project-card__top">
-              <span class="project-card__num">PROJECT 01</span>
-              <span class="project-card__status">IN DEVELOPMENT</span>
-            </div>
-            <h3 class="project-card__title">COMING SOON</h3>
-            <p class="project-card__desc">Project description will appear here.</p>
-            <div class="project-card__meta">
-              <span class="meta-label">TECH</span>
-              <span class="meta-value">—</span>
-            </div>
-            <div class="project-card__actions">
-              <button class="btn btn--small" type="button" disabled>VIEW PROJECT</button>
-              <button class="btn btn--small" type="button" disabled>GITHUB</button>
-            </div>
-          </article>
-
-          <article class="project-card corners">
-            <div class="project-card__top">
-              <span class="project-card__num">PROJECT 02</span>
-              <span class="project-card__status">IN DEVELOPMENT</span>
-            </div>
-            <h3 class="project-card__title">COMING SOON</h3>
-            <p class="project-card__desc">Project description will appear here.</p>
-            <div class="project-card__meta">
-              <span class="meta-label">TECH</span>
-              <span class="meta-value">—</span>
-            </div>
-            <div class="project-card__actions">
-              <button class="btn btn--small" type="button" disabled>VIEW PROJECT</button>
-              <button class="btn btn--small" type="button" disabled>GITHUB</button>
-            </div>
-          </article>
-
-          <article class="project-card corners">
-            <div class="project-card__top">
-              <span class="project-card__num">PROJECT 03</span>
-              <span class="project-card__status">IN DEVELOPMENT</span>
-            </div>
-            <h3 class="project-card__title">COMING SOON</h3>
-            <p class="project-card__desc">Project description will appear here.</p>
-            <div class="project-card__meta">
-              <span class="meta-label">TECH</span>
-              <span class="meta-value">—</span>
-            </div>
-            <div class="project-card__actions">
-              <button class="btn btn--small" type="button" disabled>VIEW PROJECT</button>
-              <button class="btn btn--small" type="button" disabled>GITHUB</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 03 / GITHUB ============ -->
-    <section id="github" class="section">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">03&nbsp;/</span>
-          <h2 class="section-title">GITHUB</h2>
-          <span class="section-rule" aria-hidden="true"></span>
-        </header>
-
-        <div class="github__block corners reveal">
-          <p class="github__handle">@raycooon</p>
-          <p class="github__copy">Code, projects and experiments.</p>
-          <a class="btn" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">
-            VIEW GITHUB&nbsp;<span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 04 / CONTACT ============ -->
-    <section id="contact" class="section">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">04&nbsp;/</span>
-          <h2 class="section-title">CONTACT</h2>
-          <span class="section-rule" aria-hidden="true"></span>
-        </header>
-
-        <div class="contact__terminal corners reveal">
-          <p class="contact__row"><span class="contact__prompt">&gt;</span> CONTACT.SYSTEM</p>
-          <p class="contact__row">
-            <span class="contact__prompt">&gt;</span>
-            <span class="contact__key">EMAIL</span>
-            <a class="contact__value" href="mailto:syedrainy07@gmail.com">syedrainy07@gmail.com</a>
-          </p>
-          <p class="contact__row">
-            <span class="contact__prompt">&gt;</span>
-            <span class="contact__key">GITHUB</span>
-            <a class="contact__value" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">github.com/raycooon&nbsp;<span class="arrow" aria-hidden="true">↗</span></a>
-          </p>
-          <div class="contact__actions">
-            <a class="btn" href="mailto:syedrainy07@gmail.com">SEND EMAIL</a>
+      <ul class="project-list" id="project-list">
+        <li class="project-row">
+          <span class="project-row__num">01</span>
+          <div class="project-row__body">
+            <p class="project-row__title">coming soon</p>
+            <p class="project-row__desc">Project currently in development.</p>
           </div>
-        </div>
-      </div>
+          <span class="project-row__status">coming soon</span>
+          <span class="project-row__arrow" aria-hidden="true">→</span>
+        </li>
+        <li class="project-row">
+          <span class="project-row__num">02</span>
+          <div class="project-row__body">
+            <p class="project-row__title">coming soon</p>
+            <p class="project-row__desc">Project currently in development.</p>
+          </div>
+          <span class="project-row__status">coming soon</span>
+          <span class="project-row__arrow" aria-hidden="true">→</span>
+        </li>
+        <li class="project-row">
+          <span class="project-row__num">03</span>
+          <div class="project-row__body">
+            <p class="project-row__title">coming soon</p>
+            <p class="project-row__desc">Project currently in development.</p>
+          </div>
+          <span class="project-row__status">coming soon</span>
+          <span class="project-row__arrow" aria-hidden="true">→</span>
+        </li>
+      </ul>
     </section>
 
-    <!-- Second faint waveform to close the page -->
-    <div class="ecg-band ecg-band--footer" aria-hidden="true">
-      <svg class="ecg-svg"><g class="ecg-track"></g></svg>
-    </div>
+    <!-- ================= 03 / github ================= -->
+    <section id="github" class="section">
+      <h2 class="section__title"><span class="section__num">03&nbsp;/</span> github</h2>
+
+      <p class="github__handle">github.com/raycooon</p>
+      <p class="github__copy">Code, projects and experiments.</p>
+      <p>
+        <a class="arrow-link" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">visit github</a>
+      </p>
+    </section>
+
+    <!-- ================= 04 / contact ================= -->
+    <section id="contact" class="section">
+      <h2 class="section__title"><span class="section__num">04&nbsp;/</span> contact</h2>
+
+      <p class="contact__email"><a href="mailto:syedrainy07@gmail.com">syedrainy07@gmail.com</a></p>
+      <p>
+        <a class="arrow-link" href="mailto:syedrainy07@gmail.com">send email</a>
+      </p>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <span>SYED RAYHAN ALI</span>
-      <span>© 2026</span>
-      <span class="site-footer__status">
-        <span class="status-dot status-dot--small" aria-hidden="true"></span>
-        SYSTEM ONLINE
-      </span>
-    </div>
+    <p>© 2026 Syed Rayhan Ali</p>
   </footer>
 
-  <script src="js/ecg.js"></script>
-  <script src="js/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
