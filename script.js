@@ -1,6 +1,7 @@
 /* ============================================================
    Syed Rayhan Ali — portfolio script
-   Mobile menu · active nav · reveals · ECG · project renderer
+   Projects renderer · mobile menu · header state · active nav ·
+   reveals
    ============================================================ */
 (function () {
   "use strict";
@@ -9,14 +10,14 @@
 
   /* ============================================================
      PROJECTS — edit here
-     Add an object per project. The list re-renders on load.
-     Use null for links that don't exist yet.
+     Add one object per project; the list re-renders on load.
+     Use null for links that don't exist yet (renders a plain row).
      ============================================================ */
   var PROJECTS = [
     {
       number: "01",
-      title: "coming soon",
-      description: "Project currently in development.",
+      title: "Coming soon",
+      description: "A project currently in development.",
       technologies: [],
       status: "coming soon",
       github: null,
@@ -24,8 +25,8 @@
     },
     {
       number: "02",
-      title: "coming soon",
-      description: "Project currently in development.",
+      title: "Coming soon",
+      description: "A project currently in development.",
       technologies: [],
       status: "coming soon",
       github: null,
@@ -33,8 +34,8 @@
     },
     {
       number: "03",
-      title: "coming soon",
-      description: "Project currently in development.",
+      title: "Coming soon",
+      description: "A project currently in development.",
       technologies: [],
       status: "coming soon",
       github: null,
@@ -61,7 +62,7 @@
 
       var title = document.createElement("p");
       title.className = "project-row__title";
-      title.textContent = p.title;
+      title.textContent = p.status === "coming soon" ? "Coming soon" : p.title;
 
       var desc = document.createElement("p");
       desc.className = "project-row__desc";
@@ -72,10 +73,6 @@
       body.appendChild(title);
       body.appendChild(desc);
 
-      var status = document.createElement("span");
-      status.className = "project-row__status";
-      status.textContent = p.status;
-
       var arrow = document.createElement("span");
       arrow.className = "project-row__arrow";
       arrow.setAttribute("aria-hidden", "true");
@@ -83,15 +80,19 @@
 
       li.appendChild(num);
       li.appendChild(body);
-      li.appendChild(status);
       li.appendChild(arrow);
 
-      // Real project: wrap the row in a link (github, else demo).
+      // Real project: the whole row opens its link via keyboard too.
       var href = p.github || p.demo;
       if (href) {
+        li.tabIndex = 0;
+        li.setAttribute("role", "link");
         li.style.cursor = "pointer";
         li.addEventListener("click", function () {
           window.open(href, "_blank", "noopener,noreferrer");
+        });
+        li.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") window.open(href, "_blank", "noopener,noreferrer");
         });
       }
 
@@ -139,7 +140,7 @@
     if (!header) return;
 
     function update() {
-      header.classList.toggle("is-scrolled", window.scrollY > 16);
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
     }
     window.addEventListener("scroll", update, { passive: true });
     update();
@@ -170,12 +171,14 @@
     update();
   }
 
-  /* ---------- reveal on scroll (very subtle) ---------- */
+  /* ---------- reveal on scroll (gentle) ---------- */
   function initReveals() {
     if (reducedMotion.matches) return;
 
-    // Mark sections, not individual lines
-    var targets = document.querySelectorAll(".section > *, .home__links");
+    var targets = document.querySelectorAll(
+      ".section__title, .section__note, .section__copy, " +
+      ".annotation, .explore-list, .project-list, .big-link"
+    );
     if (!targets.length) return;
 
     if (!("IntersectionObserver" in window)) return; // content stays visible
@@ -198,20 +201,16 @@
     });
   }
 
-  /* ---------- ECG signature ---------- */
-  // The SVG path is static in the HTML. If motion is allowed, the line
-  // draws itself once via stroke-dashoffset, then stays — one animation,
-  // no loops, no DOM churn.
-  function initECG() {
-    var path = document.querySelector(".ecg__path");
-    if (!path || reducedMotion.matches) return;
-
-    var length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-    path.getBoundingClientRect(); // flush styles before transitioning
-    path.style.transition = "stroke-dashoffset 2.4s ease-out";
-    path.style.strokeDashoffset = "0";
+  /* ---------- hero load-in ---------- */
+  // Adds .is-loaded one frame after init so the CSS stagger runs.
+  function initHeroLoad() {
+    var home = document.getElementById("home");
+    if (!home || reducedMotion.matches) return;
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        home.classList.add("is-loaded");
+      });
+    });
   }
 
   /* ---------- init ---------- */
@@ -221,7 +220,7 @@
     initHeader();
     initActiveNav();
     initReveals();
-    initECG();
+    initHeroLoad();
   }
 
   if (document.readyState === "loading") {

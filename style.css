@@ -1,42 +1,43 @@
 /* ============================================================
    Syed Rayhan Ali — portfolio
-   Structure: variables · reset · base · typography · layout ·
-   header · home · sections · about · projects · github ·
-   contact · footer · ecg · effects · motion
+   Warm cream editorial minimalism, centered composition,
+   ink-doodle whimsy (dotted orbit arc + paper plane).
    ============================================================ */
 
 /* ---------- variables ---------- */
 :root {
-  /* Portfolio colors */
-  --bg: #050705;
-  --bg-secondary: #090c09;
-  --dark-green: #142318;
-  --border: #1d291f;
-  --text: #e8ede8;
-  --text-secondary: #9ba79c;
-  --text-muted: #687169;
-  --accent: #6faf78;
-  --accent-bright: #a9d2af;
+  /* Warm muted palette */
+  --bg: #f5efe3;
+  --bg-secondary: #eae0ce;
+  --ink: #26221d;
+  --ink-secondary: #6a6258;
+  --ink-faint: #8f887c;
+  --brick: #a64e45;
+  --brick-deep: #8c3d35;
+  --yellow: #d4a94e;
+  --green: #71816a;
+  --line: #d8cfbd;
 
   /* Typography */
-  --font-display: "Space Mono", monospace;
-  --font-body: "IBM Plex Mono", monospace;
-  --fs-name: clamp(34px, 5.5vw, 64px);
-  --fs-section: clamp(20px, 2.4vw, 28px);
-  --fs-body: 16px;
-  --fs-small: 13px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --fs-name: clamp(40px, 6.5vw, 76px);
+  --fs-section: clamp(28px, 3.4vw, 40px);
+  --fs-body: 17px;
+  --fs-small: 14px;
 
   /* Layout */
-  --max-width: 960px;
+  --max-width: 880px;
+  --gutter: clamp(20px, 5vw, 44px);
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 32px;
-  --space-lg: 64px;
-  --space-xl: 112px;
+  --space-lg: 76px;
+  --space-xl: 120px;
 
   /* Motion */
-  --transition-fast: 150ms ease;
-  --transition-normal: 300ms ease;
+  --transition-fast: 180ms ease-out;
+  --transition-normal: 280ms ease-out;
 }
 
 /* ---------- reset / base ---------- */
@@ -50,12 +51,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px; /* anchor targets clear the fixed header */
+  scroll-padding-top: 84px; /* anchors clear the sticky header */
 }
 
 body {
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.65;
@@ -63,8 +64,19 @@ body {
   overflow-x: hidden;
 }
 
+/* Paper grain: one fixed pseudo-element, barely there. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
 a {
-  color: var(--accent);
+  color: var(--brick);
   text-decoration: none;
 }
 
@@ -72,56 +84,27 @@ ul {
   list-style: none;
 }
 
-/* CRT texture: two fixed pseudo-elements on body (scanlines + vignette).
-   Pure CSS, pointer-events none, and it sits above everything but is
-   faint enough to disappear in a screenshot. */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  pointer-events: none;
-}
-
-body::before {
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0px,
-    rgba(0, 0, 0, 0) 3px,
-    rgba(0, 0, 0, 0.09) 4px
-  );
-}
-
-body::after {
-  background: radial-gradient(
-    ellipse at center,
-    transparent 60%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-}
-
-/* ::selection — a small detail */
 ::selection {
-  background: rgba(111, 175, 120, 0.25);
-  color: var(--text);
+  background: rgba(212, 169, 78, 0.4);
+  color: var(--ink);
 }
 
 :focus-visible {
-  outline: 1px solid var(--accent-bright);
+  outline: 2px solid var(--brick);
   outline-offset: 3px;
+  border-radius: 1px;
 }
 
 /* ---------- skip link ---------- */
 .skip-link {
   position: fixed;
-  top: -48px;
+  top: -52px;
   left: var(--space-sm);
   z-index: 200;
   padding: 10px 14px;
   background: var(--bg-secondary);
-  border: 1px solid var(--accent);
-  color: var(--accent-bright);
+  border: 1px solid var(--brick);
+  color: var(--brick);
   font-size: var(--fs-small);
   transition: top var(--transition-fast);
 }
@@ -134,135 +117,160 @@ body::after {
 h1,
 h2 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 600;
+  line-height: 1.08;
 }
 
-/* micro label ("currently exploring") */
 .label {
   font-size: var(--fs-small);
-  color: var(--text-muted);
+  color: var(--ink-faint);
   margin-bottom: var(--space-xs);
 }
 
-/* ---------- layout ---------- */
+/* ---------- layout: one centered column ---------- */
 .section,
 .home,
 .site-footer {
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: clamp(20px, 5vw, 40px);
+  padding-inline: var(--gutter);
+  text-align: center;
 }
 
 .section {
   padding-block: var(--space-lg);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
 }
 
-/* compact section headings: small green number + sentence-case title */
+/* Section heading: small brick number + serif title, centered */
 .section__title {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 12px;
   font-size: var(--fs-section);
   margin-bottom: var(--space-md);
 }
 
 .section__num {
-  font-size: var(--fs-small);
   font-family: var(--font-body);
-  font-weight: 400;
-  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--fs-small);
+  color: var(--brick);
 }
 
 .section__note {
-  color: var(--text-secondary);
+  color: var(--ink-secondary);
   margin-bottom: var(--space-md);
 }
 
-/* ---------- header / navigation ---------- */
+.section__copy {
+  color: var(--ink-secondary);
+  margin-bottom: var(--space-md);
+}
+
+/* ---------- header: two-row centered nav ---------- */
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  z-index: 50;
+  background: rgba(245, 239, 227, 0.94);
   border-bottom: 1px solid transparent;
   transition: background var(--transition-normal), border-color var(--transition-normal);
 }
 
 .site-header.is-scrolled {
-  background: rgba(5, 7, 5, 0.94);
-  border-bottom-color: var(--border);
+  background: rgba(245, 239, 227, 0.97);
+  border-bottom-color: var(--line);
 }
 
 .nav {
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: 14px clamp(20px, 5vw, 40px);
+  padding: 14px var(--gutter) 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  text-align: center;
 }
 
 .nav__name {
   font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--text);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
 }
 
 .nav__links {
   display: flex;
-  gap: clamp(14px, 2.5vw, 28px);
+  justify-content: center;
+  gap: clamp(16px, 2.8vw, 30px);
 }
 
 .nav__link {
+  position: relative;
   font-size: var(--fs-small);
-  color: var(--text-secondary);
-  padding: 4px 0;
+  color: var(--ink-secondary);
+  padding: 4px 0 8px;
   transition: color var(--transition-fast);
+}
+
+/* underline expands from the center on hover */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--brick);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-normal);
 }
 
 .nav__link:hover,
 .nav__link:focus-visible {
-  color: var(--text);
+  color: var(--ink);
 }
 
-/* active section: subtle green underline */
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* active section: brick underline stays on */
 .nav__link.is-active {
-  color: var(--accent-bright);
+  color: var(--ink);
 }
 
 .nav__link.is-active::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: 3px;
-  background: var(--accent);
+  transform: scaleX(1);
 }
 
 /* mobile menu button — hidden on desktop */
 .nav__toggle {
   display: none;
   font-size: var(--fs-small);
-  color: var(--text-secondary);
-  padding: 8px 10px;
-  border: 1px solid var(--border);
+  color: var(--ink);
+  padding: 8px 12px;
+  border: 1px solid var(--line);
   background: none;
   cursor: pointer;
 }
 
-/* ---------- arrow links (projects →, email →, github →) ---------- */
+/* ---------- arrow links ---------- */
 .arrow-link {
   display: inline-block;
-  font-size: var(--fs-small);
-  color: var(--accent);
+  font-size: var(--fs-body);
+  color: var(--brick);
 }
 
 .arrow-link::after {
   content: "→";
   display: inline-block;
-  margin-left: 6px;
+  margin-left: 7px;
   transition: transform var(--transition-fast);
 }
 
@@ -273,12 +281,13 @@ h2 {
 
 .arrow-link:hover,
 .arrow-link:focus-visible {
-  color: var(--accent-bright);
+  color: var(--brick-deep);
 }
 
-/* ---------- home ---------- */
+/* ---------- home: centered hero with orbit arc ---------- */
 .home {
-  padding-top: clamp(120px, 18vh, 180px);
+  position: relative;
+  padding-top: clamp(56px, 9vh, 96px);
   padding-bottom: var(--space-lg);
 }
 
@@ -287,247 +296,266 @@ h2 {
   margin-bottom: var(--space-md);
 }
 
+/* italic serif accent on the surname */
+.home__name em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--brick);
+}
+
 .home__intro {
-  color: var(--text-secondary);
+  color: var(--ink-secondary);
   margin-bottom: var(--space-md);
 }
 
 .home__links {
   display: flex;
+  justify-content: center;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
 }
 
-/* ---------- ECG signature ---------- */
-/* One thin line under the hero. Static SVG path; script.js animates
-   stroke-dashoffset when motion is allowed. */
-.ecg {
-  width: min(680px, 100%);
+/* The orbit: dotted arc arcing over the name, plane riding it.
+   Width is slightly wider than the text column; sits behind nothing,
+   overlapping only empty space above the heading. */
+.orbit {
+  display: block;
+  width: min(620px, 92%);
   height: auto;
+  margin: 0 auto var(--space-xs);
+  overflow: visible;
 }
 
-.ecg__path {
+.orbit__arc {
   fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.25;
-  opacity: 0.55;
-  vector-effect: non-scaling-stroke;
+  stroke: var(--ink-faint);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 1 8;
+  opacity: 0.85;
 }
 
-/* ---------- about ---------- */
-.about {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr);
-  gap: var(--space-lg);
-  align-items: start;
+.orbit__plane {
+  animation: ride 7s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.about__text p {
-  max-width: 62ch;
-  color: var(--text-secondary);
+@keyframes ride {
+  0%,
+  100% {
+    transform: translate(452px, 44px) rotate(9deg);
+  }
+  50% {
+    transform: translate(452px, 36px) rotate(13deg);
+  }
 }
 
-.about__text p + p {
+.plane__body {
+  fill: var(--bg-secondary);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.plane__fold {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+/* ---------- about: single centered column ---------- */
+.about p {
+  max-width: 56ch;
+  margin-inline: auto;
+  color: var(--ink-secondary);
+}
+
+.about p + p {
   margin-top: var(--space-sm);
 }
 
-.explore-list li {
-  padding: 6px 0;
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
+/* the one handwritten-style annotation */
+.annotation {
+  margin-top: var(--space-md);
+  font-style: italic;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.annotation__squiggle {
+  width: 20px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+.annotation__squiggle path {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* interests: centered inline list with dots between items */
+.label {
+  margin-top: var(--space-lg);
+}
+
+.explore-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 6px;
   font-size: var(--fs-small);
+  color: var(--ink);
 }
 
-.explore-list li:first-child {
-  border-top: 1px solid var(--border);
+.explore-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* ---------- projects: a list, not cards ---------- */
+/* small dot separator between items (not after the last) */
+.explore-list li + li::before {
+  content: "•";
+  color: var(--yellow);
+  font-size: 10px;
+}
+
+/* ---------- projects: centered archive rows ---------- */
 .project-list {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
 }
 
 .project-row {
   display: grid;
-  grid-template-columns: 3em minmax(0, 1fr) auto auto;
+  grid-template-columns: 2.5em minmax(0, 1fr) auto;
   gap: var(--space-sm);
   align-items: baseline;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 22px 10px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.project-row:last-child {
+  border-bottom: none;
 }
 
 .project-row__num {
   font-size: var(--fs-small);
-  color: var(--accent);
+  color: var(--brick);
 }
 
 .project-row__title {
-  color: var(--text);
+  color: var(--ink);
   font-weight: 500;
+  transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .project-row__desc {
-  color: var(--text-muted);
+  color: var(--ink-faint);
   font-size: var(--fs-small);
   margin-top: 2px;
 }
 
-.project-row__status {
-  font-size: var(--fs-small);
-  color: var(--text-muted);
-}
-
 .project-row__arrow {
-  color: var(--text-muted);
+  color: var(--ink-faint);
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-/* hover: row brightens slightly, arrow nudges right. Plain rows are
-   not focusable; rows become links when real projects exist. */
+/* hover: soft cream-dark wash, title nudges right, arrow slides */
 @media (hover: hover) {
   .project-row:hover {
-    background: rgba(111, 175, 120, 0.03);
+    background: rgba(234, 224, 206, 0.55);
   }
 
   .project-row:hover .project-row__title {
-    color: var(--accent-bright);
+    transform: translateX(4px);
   }
 
   .project-row:hover .project-row__arrow {
-    transform: translateX(4px);
-    color: var(--accent);
+    transform: translateX(5px);
+    color: var(--brick);
   }
 }
 
-/* ---------- github ---------- */
-.github__handle {
+/* ---------- github / contact: centered serif feature links ---------- */
+.big-link {
   font-family: var(--font-display);
-  font-size: clamp(18px, 2.2vw, 24px);
-  margin-bottom: 4px;
-}
-
-.github__copy {
-  color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-}
-
-/* ---------- contact ---------- */
-.contact__email {
-  font-family: var(--font-display);
-  font-size: clamp(18px, 2.2vw, 24px);
-  margin-bottom: var(--space-md);
+  font-size: clamp(22px, 3vw, 32px);
+  margin-bottom: 8px;
   overflow-wrap: anywhere;
 }
 
-.contact__email a {
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
+.big-link a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
   transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.contact__email a:hover,
-.contact__email a:focus-visible {
-  color: var(--accent-bright);
-  border-bottom-color: var(--accent);
+.big-link a:hover,
+.big-link a:focus-visible {
+  color: var(--brick);
+  border-bottom-color: var(--brick);
 }
 
 /* ---------- footer ---------- */
 .site-footer {
-  padding-block: var(--space-md);
-  border-top: 1px solid var(--border);
+  padding-block: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--line);
 }
 
 .site-footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-size: var(--fs-small);
-  color: var(--text-muted);
+  color: var(--ink-faint);
 }
 
-/* ---------- reveal animation (JS-gated) ---------- */
-/* Content is fully visible without JS; .js enables the subtle fade-up. */
+.footer__star {
+  width: 12px;
+  height: 12px;
+}
+
+.footer__star path {
+  fill: var(--yellow);
+}
+
+/* ---------- load-in: hero fades up in a quick stagger ---------- */
+.js .home__name,
+.js .home__intro,
+.js .home__links,
+.js .orbit {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+
+.js .home.is-loaded .orbit { opacity: 1; transform: none; transition-delay: 0ms; }
+.js .home.is-loaded .home__name { opacity: 1; transform: none; transition-delay: 120ms; }
+.js .home.is-loaded .home__intro { opacity: 1; transform: none; transition-delay: 240ms; }
+.js .home.is-loaded .home__links { opacity: 1; transform: none; transition-delay: 360ms; }
+
+/* ---------- reveal on scroll (sections, gentle) ---------- */
 .js .reveal {
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
 }
 
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
-}
-
-/* ---------- responsive ---------- */
-@media (max-width: 760px) {
-  .about {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
-
-  .home__links {
-    gap: var(--space-sm);
-  }
-}
-
-@media (max-width: 640px) {
-  :root {
-    --space-xl: 64px;
-  }
-
-  html {
-    scroll-padding-top: 64px;
-  }
-
-  /* Mobile navigation: name + "menu" button; links become a
-     dropdown panel under the header. */
-  .nav__toggle {
-    display: block;
-  }
-
-  .nav__links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    padding: 8px clamp(20px, 5vw, 40px) 16px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    display: none;
-  }
-
-  .nav__links.is-open {
-    display: flex;
-  }
-
-  .nav__link {
-    display: block;
-    padding: 12px 0; /* large touch targets */
-    font-size: var(--fs-body);
-  }
-
-  /* ECG: much smaller and fainter on mobile */
-  .ecg {
-    width: 220px;
-    opacity: 0.5;
-  }
-
-  .home {
-    padding-top: 96px;
-  }
-
-  /* project rows: number + content, status wraps below */
-  .project-row {
-    grid-template-columns: 2.5em minmax(0, 1fr) auto;
-    grid-template-areas:
-      "num body arrow"
-      "num status arrow";
-    row-gap: 2px;
-  }
-
-  .project-row__num { grid-area: num; }
-  .project-row__body { grid-area: body; }
-  .project-row__status { grid-area: status; }
-  .project-row__arrow { grid-area: arrow; }
 }
 
 /* ---------- reduced motion ---------- */
@@ -541,23 +569,121 @@ h2 {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 
+  .orbit__plane {
+    animation: none;
+    transform: translate(452px, 44px) rotate(9deg);
+  }
+
+  .js .home__name,
+  .js .home__intro,
+  .js .home__links,
+  .js .orbit,
   .js .reveal {
     opacity: 1;
     transform: none;
+    transition: none;
   }
 }
 
-/* ---------- print: drop atmosphere, keep content ---------- */
+/* ---------- responsive ---------- */
+@media (max-width: 640px) {
+  :root {
+    --space-lg: 56px;
+    --space-xl: 72px;
+  }
+
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  /* Mobile navigation: name + "menu" button, dropdown panel below */
+  .nav__toggle {
+    display: block;
+  }
+
+  /* collapse the two-row nav to one row with space-between */
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px var(--gutter);
+  }
+
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    display: none;
+  }
+
+  .nav__links.is-open {
+    display: flex;
+    animation: menu-in 200ms ease-out;
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .nav__link {
+    display: block;
+    padding: 12px 0;
+    font-size: var(--fs-body);
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__link.is-active {
+    color: var(--brick);
+  }
+
+  /* Mobile art direction: smaller, quieter arc, tucked behind the name */
+  .orbit {
+    width: 240px;
+    margin-bottom: -28px; /* pull the name up into the arc's curve */
+    opacity: 0.8;
+  }
+
+  .home__links {
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .project-row {
+    padding: 18px 6px;
+  }
+}
+
+/* ---------- print: clean content only ---------- */
 @media print {
-  body::before,
-  body::after {
+  body::before {
     display: none;
   }
 
   .site-header {
     position: static;
+  }
+
+  .orbit {
+    display: none;
   }
 
   body {

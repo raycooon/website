@@ -6,23 +6,23 @@
 
   <title>Syed Rayhan Ali | CSE Student</title>
   <meta name="description" content="Portfolio of Syed Rayhan Ali, a first-year CSE student interested in Data Science, AI/ML, Computational Biology and Cybersecurity.">
-  <meta name="theme-color" content="#050705">
+  <meta name="theme-color" content="#F5EFE3">
 
   <meta property="og:title" content="Syed Rayhan Ali | CSE Student">
   <meta property="og:description" content="First-year CSE student interested in Data Science, AI/ML, Computational Biology and Cybersecurity.">
   <meta property="og:type" content="website">
   <!-- Add og:url (and an og:image) once the site has a real domain. -->
 
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/illustrations/favicon.svg">
 
-  <!-- Fonts: Space Mono (display) + IBM Plex Mono (body). display=swap; falls back to monospace. -->
+  <!-- Fonts: Fraunces (display) + IBM Plex Sans (body). display=swap; serif/sans fallbacks. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Progressive enhancement flag: reveal animations only run when JS is available. -->
+  <!-- Progressive enhancement flag: load/reveal animations only run when JS is available. -->
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -36,11 +36,11 @@
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">menu</button>
 
       <ul class="nav__links" id="nav-menu">
-        <li><a class="nav__link" href="#home">home</a></li>
-        <li><a class="nav__link" href="#about">about</a></li>
-        <li><a class="nav__link" href="#projects">projects</a></li>
-        <li><a class="nav__link" href="#github">github</a></li>
-        <li><a class="nav__link" href="#contact">contact</a></li>
+        <li><a class="nav__link" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#github">GitHub</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -49,7 +49,17 @@
 
     <!-- ================= home ================= -->
     <section id="home" class="home">
-      <h1 class="home__name">Syed Rayhan Ali</h1>
+      <!-- decorative: dotted flight arc sweeping over the name,
+           paper plane riding it. Same ink family as the rest of the page. -->
+      <svg class="orbit" viewBox="0 0 640 190" aria-hidden="true">
+        <path class="orbit__arc" d="M14 170 C 150 42, 490 42, 626 170"/>
+        <g class="orbit__plane" transform="translate(452, 44) rotate(9)">
+          <path class="plane__body" d="M0 28 L46 0 L22 32 L28 44 L10 38 L2 44 Z"/>
+          <path class="plane__fold" d="M46 0 L10 38"/>
+        </g>
+      </svg>
+
+      <h1 class="home__name">Syed Rayhan <em>Ali</em></h1>
 
       <p class="home__intro">
         First-year CSE student exploring<br>
@@ -62,50 +72,46 @@
         <a class="arrow-link" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">github</a>
         <a class="arrow-link" href="mailto:syedrainy07@gmail.com">email</a>
       </p>
-
-      <!-- ECG signature: a static SVG path; animated by script.js when motion is allowed -->
-      <svg class="ecg" viewBox="0 0 680 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <path class="ecg__path"
-          d="M0 34 H44 L52 34 56 26 60 42 64 34 H128 L136 34 142 12 148 52 154 34 H236 L244 34 248 27 252 41 256 34 H320 L328 34 334 12 340 52 346 34 H452 L460 34 464 26 468 42 472 34 H560 L568 34 574 15 580 50 586 34 H680"/>
-      </svg>
     </section>
 
-    <!-- ================= 01 / about ================= -->
+    <!-- ================= about ================= -->
     <section id="about" class="section">
-      <h2 class="section__title"><span class="section__num">01&nbsp;/</span> about</h2>
+      <h2 class="section__title"><span class="section__num">01</span> About</h2>
 
       <div class="about">
-        <div class="about__text">
-          <p>
-            I'm a first-year CSE student interested in data science,
-            AI/ML, computational biology and cybersecurity.
-          </p>
-          <p>
-            I'm currently learning, experimenting and building
-            projects across these areas.
-          </p>
-        </div>
+        <p>
+          I'm a first-year CSE student interested in data science,
+          AI/ML, computational biology and cybersecurity.
+        </p>
+        <p>
+          I'm currently learning, experimenting and building
+          projects across these areas.
+        </p>
+        <p class="annotation">
+          <svg class="annotation__squiggle" viewBox="0 0 22 12" aria-hidden="true">
+            <path d="M2 8 C 5 2, 8 2, 11 7 S 18 11, 20 4"/>
+          </svg>
+          still learning, still building.
+        </p>
 
-        <div class="about__aside">
-          <p class="label">currently exploring</p>
-          <ul class="explore-list">
-            <li>data science</li>
-            <li>AI / ML</li>
-            <li>computational biology</li>
-            <li>cybersecurity</li>
-          </ul>
-        </div>
+        <p class="label">currently exploring</p>
+        <ul class="explore-list">
+          <li>Data Science</li>
+          <li>AI / ML</li>
+          <li>Computational Biology</li>
+          <li>Cybersecurity</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ================= 02 / projects ================= -->
+    <!-- ================= projects ================= -->
     <!--
       The list below is the no-JS version. To add real projects,
       edit the PROJECTS array at the top of script.js — it
       re-renders this list on page load.
     -->
     <section id="projects" class="section">
-      <h2 class="section__title"><span class="section__num">02&nbsp;/</span> projects</h2>
+      <h2 class="section__title"><span class="section__num">02</span> Projects</h2>
 
       <p class="section__note">Projects I'm currently building.</p>
 
@@ -113,49 +119,46 @@
         <li class="project-row">
           <span class="project-row__num">01</span>
           <div class="project-row__body">
-            <p class="project-row__title">coming soon</p>
-            <p class="project-row__desc">Project currently in development.</p>
+            <p class="project-row__title">Coming soon</p>
+            <p class="project-row__desc">A project currently in development.</p>
           </div>
-          <span class="project-row__status">coming soon</span>
           <span class="project-row__arrow" aria-hidden="true">→</span>
         </li>
         <li class="project-row">
           <span class="project-row__num">02</span>
           <div class="project-row__body">
-            <p class="project-row__title">coming soon</p>
-            <p class="project-row__desc">Project currently in development.</p>
+            <p class="project-row__title">Coming soon</p>
+            <p class="project-row__desc">A project currently in development.</p>
           </div>
-          <span class="project-row__status">coming soon</span>
           <span class="project-row__arrow" aria-hidden="true">→</span>
         </li>
         <li class="project-row">
           <span class="project-row__num">03</span>
           <div class="project-row__body">
-            <p class="project-row__title">coming soon</p>
-            <p class="project-row__desc">Project currently in development.</p>
+            <p class="project-row__title">Coming soon</p>
+            <p class="project-row__desc">A project currently in development.</p>
           </div>
-          <span class="project-row__status">coming soon</span>
           <span class="project-row__arrow" aria-hidden="true">→</span>
         </li>
       </ul>
     </section>
 
-    <!-- ================= 03 / github ================= -->
+    <!-- ================= github ================= -->
     <section id="github" class="section">
-      <h2 class="section__title"><span class="section__num">03&nbsp;/</span> github</h2>
+      <h2 class="section__title"><span class="section__num">03</span> GitHub</h2>
 
-      <p class="github__handle">github.com/raycooon</p>
-      <p class="github__copy">Code, projects and experiments.</p>
+      <p class="big-link"><a href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">github.com/raycooon</a></p>
+      <p class="section__copy">Code, projects and experiments.</p>
       <p>
         <a class="arrow-link" href="https://github.com/raycooon" target="_blank" rel="noopener noreferrer">visit github</a>
       </p>
     </section>
 
-    <!-- ================= 04 / contact ================= -->
+    <!-- ================= contact ================= -->
     <section id="contact" class="section">
-      <h2 class="section__title"><span class="section__num">04&nbsp;/</span> contact</h2>
+      <h2 class="section__title"><span class="section__num">04</span> Contact</h2>
 
-      <p class="contact__email"><a href="mailto:syedrainy07@gmail.com">syedrainy07@gmail.com</a></p>
+      <p class="big-link"><a href="mailto:syedrainy07@gmail.com">syedrainy07@gmail.com</a></p>
       <p>
         <a class="arrow-link" href="mailto:syedrainy07@gmail.com">send email</a>
       </p>
@@ -164,7 +167,12 @@
   </main>
 
   <footer class="site-footer">
-    <p>© 2026 Syed Rayhan Ali</p>
+    <p>
+      <svg class="footer__star" viewBox="0 0 14 14" aria-hidden="true">
+        <path d="M7 1 L8.1 5.9 L13 7 L8.1 8.1 L7 13 L5.9 8.1 L1 7 L5.9 5.9 Z"/>
+      </svg>
+      © 2026 Syed Rayhan Ali
+    </p>
   </footer>
 
   <script src="script.js"></script>
